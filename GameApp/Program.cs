@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using GameApp.BLL;
+namespace GameApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var GameBusiness = new GameBusiness();
+            var gamename = GameBusiness.PlayWithBot(1);
+            Console.WriteLine(gamename);
+        }
+    }
+}
