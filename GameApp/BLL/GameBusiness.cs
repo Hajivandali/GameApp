@@ -9,11 +9,16 @@ namespace GameApp.BLL
 {
     public class GameBusiness
     {
-        private readonly GameDataAccess _gameDataAccess = new GameDataAccess();
+        private readonly IGameDataAccess _gameDataAccess;
+
+        public GameBusiness(IGameDataAccess gameDataAccess)
+        {
+            _gameDataAccess = gameDataAccess;
+        }
 
         public string PlayWithBot(long id)
         {
-            var game = _gameDataAccess.findBy(id);
+            var game = _gameDataAccess.FindBy(id);
             game = game.ToUpper();
 
             return $"The Selcted Game Is :{game}";

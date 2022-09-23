@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameApp.DAL
 {
-    public class GameDataAccess
+    public class GameDataAccess : IGameDataAccess
     {
         private readonly Dictionary<long, string> _games = new Dictionary<long, string>
         {
@@ -15,9 +15,11 @@ namespace GameApp.DAL
             {3,"Pubg" },
         };
 
-        public string findBy(long id)
+        public string FindBy(long id)
         {
             return _games[id];         
         }
+
+       
     }
 }
