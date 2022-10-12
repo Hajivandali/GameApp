@@ -1,5 +1,7 @@
 ﻿using GameApp.BLL;
 using GameApp.DAL;
+using GameApp.Helpers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GameApp
 {
@@ -7,11 +9,21 @@ namespace GameApp
     {
         static void Main(string[] args)
         {
-            var GameBusiness = new GameBusiness(new GameDataAccess());
-            var gamename = GameBusiness.PlayWithBot(1);
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddTransient<IGameDataAccess,GameDataAccess>();
+            serviceCollection.AddTransient<ILogger, Logger>();
+            serviceCollection.AddTransient<IGameBusiness,GameBusiness >();
+
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var gameBusiness = serviceProvider.GetRequiredService<IGameBusiness>();
+
+
+            //var GameBusiness = new GameBusiness(new GameDataAccess(new Logger()),new Logger());
+            var gamename = gameBusiness.PlayWithBot(1);
             Console.WriteLine(gamename);
         }
 
       
     }
-}
+}  
