@@ -13,7 +13,7 @@ namespace GameApp.BLL
         private readonly ILogger _logger;
         private readonly IGameDataAccess _gameDataAccess;
 
-        public GameBusiness(IGameDataAccess gameDataAccess, Logger logger)
+        public GameBusiness(IGameDataAccess gameDataAccess, ILogger logger)
         {
             _gameDataAccess = gameDataAccess;
             _logger = logger;

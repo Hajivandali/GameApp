@@ -18,8 +18,6 @@ namespace GameApp
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var gameBusiness = serviceProvider.GetRequiredService<IGameBusiness>();
 
-
-            //var GameBusiness = new GameBusiness(new GameDataAccess(new Logger()),new Logger());
             var gamename = gameBusiness.PlayWithBot(2);
             Console.WriteLine(gamename);
         }
