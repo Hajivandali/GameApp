@@ -10,9 +10,9 @@ namespace GameApp
         static void Main(string[] args)
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddTransient<IGameDataAccess,GameDataAccess>();
+            serviceCollection.AddTransient<IGameDataAccess, GameDataAccess>();
             serviceCollection.AddTransient<ILogger, Logger>();
-            serviceCollection.AddTransient<IGameBusiness,GameBusiness >();
+            serviceCollection.AddTransient<IGameBusiness, GameBusiness>();
 
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -20,7 +20,7 @@ namespace GameApp
 
 
             //var GameBusiness = new GameBusiness(new GameDataAccess(new Logger()),new Logger());
-            var gamename = gameBusiness.PlayWithBot(1);
+            var gamename = gameBusiness.PlayWithBot(2);
             Console.WriteLine(gamename);
         }
 
